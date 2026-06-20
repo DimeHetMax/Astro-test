@@ -1,0 +1,78 @@
+---
+const { type, name, className } = Astro.props;
+---
+
+<button
+  type={type}
+  class={`button ${className}`}
+  data-button-class={className}
+  data-button-name={name}>{name}</button
+>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>("[data-button-class]");
+  btn?.addEventListener("click", () => {
+    const aboutPage = "About Page Click";
+    const homePage = "Home Page Click";
+    const blogPage = "Blog Page Click";
+    console.log("Hello", `${btn.dataset.buttonName}`);
+    if (homePage === btn.dataset.buttonName) {
+      console.log("I am in the Home Page");
+    } else if (aboutPage === btn.dataset.buttonName) {    
+      console.log("I am in the about page");
+    } else if (blogPage === btn.dataset.buttonName) {
+      console.log("I am in the Blog page");
+    }
+  });
+</script>
+
+<style>
+  .button {
+    min-height: 44px;
+    margin: 8px auto 48px;
+    padding: 12px 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 999px;
+    color: #fff;
+    background: #1d1d1f;
+    box-shadow:
+      0 12px 26px rgba(0, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    cursor: pointer;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0;
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      background-color 180ms ease;
+  }
+
+  .button:hover,
+  .button:focus-visible {
+    background: #2d2d31;
+    box-shadow:
+      0 16px 34px rgba(0, 0, 0, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    outline: none;
+  }
+
+  .button:active {
+    transform: translateY(0);
+    box-shadow:
+      0 8px 18px rgba(0, 0, 0, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  }
+
+  @media (max-width: 560px) {
+    .button {
+      width: min(100%, 320px);
+      margin-bottom: 34px;
+    }
+  }
+</style>

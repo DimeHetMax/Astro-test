@@ -1,0 +1,22 @@
+---
+const {
+  rel,
+  href,
+  isExternal = false,
+  class: className,
+  className: legacyClassName,
+  ...attrs
+} = Astro.props;
+
+const externalRel = isExternal ? "noopener noreferrer external" : "";
+const linkRel = [rel, externalRel].filter(Boolean).join(" ");
+---
+
+<a
+  {...attrs}
+  href={href}
+  class:list={[className, legacyClassName]}
+  rel={linkRel || undefined}
+>
+  <slot />
+</a>

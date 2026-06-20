@@ -1,0 +1,302 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Button from "../components/Button.astro";
+import { Image } from "astro:assets";
+import lazarsPhoto from "../assets/painting.jpg";
+import lazarsPhotoMatt from "../assets/Matt_Tuck.jpg";
+import lazarsPhotoKirk from "../assets/kirk.jpg";
+---
+
+<Layout title="About Page">
+  <Header />
+  <main class="about-page">
+    <section class="about-hero">
+      <p class="eyebrow">Portrait and editorial photographer</p>
+      <h1>Creating quiet, cinematic images with a human point of view.</h1>
+      <p class="hero-copy">
+        I work with artists, founders, and creative teams to build photographs
+        that feel polished, honest, and ready for publication.
+      </p>
+    </section>
+
+    <ul class="gallery-about">
+      <li class="gallery-about-item">
+        <Image src={lazarsPhoto} alt="Editorial portrait with painterly color and texture" />
+      </li>
+      <li class="gallery-about-item">
+        <Image src={lazarsPhotoMatt} alt="Professional musician portrait in dramatic light" />
+      </li>
+      <li class="gallery-about-item gallery-about-item-wide">
+        <Image src={lazarsPhotoKirk} alt="Black and white artist portrait with strong contrast" />
+      </li>
+    </ul>
+
+    <section class="about-content" aria-label="Photographer profile">
+      <div class="profile-card">
+        <p class="section-label">Approach</p>
+        <h2>Direction first. Atmosphere always.</h2>
+        <p>
+          My sessions are built around trust, precise lighting, and small
+          moments of movement. The result is imagery that feels intentional
+          without losing the natural presence of the person in front of the
+          camera.
+        </p>
+      </div>
+
+      <div class="profile-card profile-card-muted">
+        <p class="section-label">Selected work</p>
+        <ul class="services-list">
+          <li>Artist portraits</li>
+          <li>Editorial stories</li>
+          <li>Brand campaigns</li>
+          <li>Press kits</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="about-action">
+      <Button type="button" className="about_page_btn" name="Book a Session" />
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .about-page {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 76px 0 20px;
+  }
+
+  .about-hero {
+    max-width: 980px;
+    margin-bottom: 46px;
+  }
+
+  .eyebrow {
+    margin: 0 0 14px;
+    color: #727272;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    max-width: 1040px;
+    color: #151515;
+    font-size: clamp(46px, 7vw, 88px);
+    line-height: 0.96;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+
+  .hero-copy {
+    max-width: 660px;
+    margin: 24px 0 0;
+    color: #4f4f52;
+    font-size: clamp(18px, 2vw, 23px);
+    line-height: 1.45;
+  }
+
+  .gallery-about {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-rows: minmax(260px, 430px) minmax(260px, 430px);
+    gap: 18px;
+  }
+
+  .gallery-about-item {
+    overflow: hidden;
+    position: relative;
+    border-radius: 6px;
+    background: #111;
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .gallery-about-item:first-child {
+    grid-row: span 2;
+  }
+
+  .gallery-about-item-wide {
+    grid-column: 2;
+  }
+
+  .gallery-about-item :global(img) {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+    transition: transform 600ms ease, filter 600ms ease;
+  }
+
+  .gallery-about-item:hover :global(img) {
+    filter: contrast(1.04) saturate(0.94);
+    transform: scale(1.025);
+  }
+
+  .about-content {
+    margin: 64px 0 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .profile-card {
+    padding: clamp(24px, 4vw, 42px);
+    border: 1px solid rgba(21, 21, 21, 0.08);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.07);
+  }
+
+  .profile-card-muted {
+    background: #151515;
+    color: #fff;
+  }
+
+  .section-label {
+    margin: 0 0 18px;
+    color: #86868b;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0 0 18px;
+    color: #151515;
+    font-size: clamp(28px, 4vw, 46px);
+    line-height: 1.02;
+    letter-spacing: 0;
+  }
+
+  .profile-card-muted .section-label,
+  .profile-card-muted h2 {
+    color: #fff;
+  }
+
+  .profile-card p {
+    margin: 0;
+    color: #424245;
+    font-size: 18px;
+    line-height: 1.65;
+  }
+
+  .services-list {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+
+  .services-list li {
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.88);
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .about-action {
+    display: flex;
+    justify-content: center;
+    padding-top: 34px;
+  }
+
+  @media (min-width: 1200px) {
+    .about-page {
+      padding-top: 96px;
+    }
+
+    .gallery-about {
+      gap: 22px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .about-page {
+      width: min(100% - 36px, 820px);
+      padding-top: 56px;
+    }
+
+    .about-hero {
+      margin-bottom: 28px;
+    }
+
+    .gallery-about {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: auto;
+    }
+
+    .gallery-about-item:first-child,
+    .gallery-about-item-wide {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    .gallery-about-item :global(img) {
+      aspect-ratio: 4 / 5;
+    }
+
+    .about-content {
+      margin-top: 44px;
+      grid-template-columns: 1fr;
+    }
+
+    .profile-card p {
+      font-size: 17px;
+      line-height: 1.66;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .about-page {
+      width: min(100% - 28px, 480px);
+      padding-top: 44px;
+    }
+
+    h1 {
+      font-size: 42px;
+      line-height: 1;
+    }
+
+    .hero-copy {
+      font-size: 17px;
+    }
+
+    .gallery-about {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .gallery-about-item :global(img) {
+      aspect-ratio: 4 / 5;
+    }
+
+    .about-content {
+      margin-top: 28px;
+    }
+
+    .profile-card {
+      padding: 22px;
+    }
+
+    .profile-card p {
+      font-size: 16px;
+      line-height: 1.62;
+    }
+
+    .about-action {
+      padding-top: 26px;
+    }
+  }
+</style>

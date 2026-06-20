@@ -1,0 +1,163 @@
+---
+import Link from "./Link.astro";
+---
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary navigation">
+    <Link class="brand" href="/" aria-label="Home">
+      <span class="brand-mark">A</span>
+      <span>Astro Studio</span>
+    </Link>
+
+    <ul class="nav-links">
+      <li><Link href="/about">About</Link></li>
+      <li><Link href="/blog/blog">Blog</Link></li>
+      <li><Link href="/portfolio/gallery">Portfolio</Link></li>
+      <li><Link href="https://www.instagram.com/dimehin/" isExternal=true>Instagram</Link></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: 14px 24px 0;
+  }
+
+  .nav {
+    width: min(1120px, 100%);
+    min-height: 58px;
+    margin: 0 auto;
+    padding: 8px 10px 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    border: 1px solid rgba(29, 29, 31, 0.08);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(22px) saturate(180%);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+  }
+
+  .brand {
+    gap: 10px;
+    min-width: 0;
+    color: #1d1d1f;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #fff;
+    background: linear-gradient(145deg, #1d1d1f 0%, #55555a 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+
+  .nav-links {
+    margin: 0;
+    padding: 4px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 4px;
+    border-radius: 999px;
+    background: rgba(245, 245, 247, 0.76);
+  }
+
+  .nav-links li {
+    display: flex;
+  }
+
+  .nav-links a {
+    min-height: 36px;
+    padding: 9px 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    color: #424245;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+      color 180ms ease,
+      background-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus-visible {
+    color: #1d1d1f;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    outline: none;
+  }
+
+  @media (max-width: 860px) {
+    .nav {
+      border-radius: 28px;
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    .nav-links {
+      width: 100%;
+      justify-content: stretch;
+      border-radius: 20px;
+    }
+
+    .nav-links li {
+      flex: 1 1 calc(50% - 4px);
+    }
+
+    .nav-links a {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .site-header {
+      padding-inline: 14px;
+    }
+
+    .nav {
+      min-height: auto;
+    }
+
+    .brand {
+      padding-inline: 4px;
+    }
+
+    .nav-links {
+      width: 100%;
+    }
+
+    .nav-links li {
+      flex: 1 1 100%;
+    }
+
+    .nav-links a {
+      flex: 1;
+      min-height: 40px;
+    }
+  }
+</style>
